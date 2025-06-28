@@ -1,0 +1,399 @@
++-- Auth
+|   +-- Token
++-- Provider
+|   +-- Name
+|   +-- AppID
+|   +-- Version
+|   +-- TimeStamp
++-- Map
+|   +-- Name
+|   +-- MatchID
+|   +-- GameTime
+|   +-- ClockTime
+|   +-- IsDaytime
+|   +-- IsNightstalkerNight
+|   +-- RadiantScore
+|   +-- DireScore
+|   +-- GameState
+|   +-- IsPaused
+|   +-- Winningteam
+|   +-- CustomGameName
+|   +-- WardPurchaseCooldown
+|   +-- RadiantWardPurchaseCooldown
+|   +-- DireWardPurchaseCooldown
+|   +-- RoshanState
+|   +-- RoshanStateEndTime
++-- Player
+|   +-- LocalPlayer
+|   |   +-- SteamID
+|   |   +-- AccountID
+|   |   +-- Name
+|   |   +-- Activity
+|   |   +-- Kills
+|   |   +-- Deaths
+|   |   +-- Assists
+|   |   +-- LastHits
+|   |   +-- Denies
+|   |   +-- KillStreak
+|   |   +-- CommandsIssued
+|   |   +-- KillList
+|   |   |   \
+|   |   |   (Map of kill id to player id)
+|   |   |   ...
+|   |   +-- Team
+|   |   +-- PlayerSlot
+|   |   +-- PlayerTeamSlot
+|   |   +-- Gold
+|   |   +-- GoldReliable
+|   |   +-- GoldUnreliable
+|   |   +-- GoldFromHeroKills
+|   |   +-- GoldFromCreepKills
+|   |   +-- GoldFromIncome
+|   |   +-- GoldFromShared
+|   |   +-- GoldPerMinute
+|   |   +-- ExperiencePerMinute
+|   |   +-- OnstageSeat
+|   |   +-- NetWorth
+|   |   +-- HeroDamage
+|   |   +-- HeroHealing
+|   |   +-- TowerDamage
+|   |   +-- SupportGoldSpent
+|   |   +-- ConsumableGoldSpent
+|   |   +-- ItemGoldSpent
+|   |   +-- GoldLostToDeath
+|   |   +-- GoldSpentOnBuybacks
+|   |   +-- WardsPurchased
+|   |   +-- WardsPlaced
+|   |   +-- WardsDestroyed
+|   |   +-- RunesActivated
+|   |   +-- CampsStacked
+|   +-- Teams
+|   |   \
+|   |   (Multi-map of team to player id to Player Details)
+|   |   ...
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Hero
+|   +-- LocalPlayer
+|   |   +-- Location
+|   |   +-- ID
+|   |   +-- Name
+|   |   +-- Level
+|   |   +-- Experience
+|   |   +-- IsAlive
+|   |   +-- SecondsToRespawn
+|   |   +-- BuybackCost
+|   |   +-- BuybackCooldown
+|   |   +-- Health
+|   |   +-- MaxHealth
+|   |   +-- HealthPercent
+|   |   +-- Mana
+|   |   +-- MaxMana
+|   |   +-- ManaPercent
+|   |   +-- HeroState
+|   |   +-- IsSilenced
+|   |   +-- IsStunned
+|   |   +-- IsDisarmed
+|   |   +-- IsMagicImmune
+|   |   +-- IsHexed
+|   |   +-- IsBreak
+|   |   +-- IsSmoked
+|   |   +-- HasDebuff
+|   |   +-- IsMuted
+|   |   +-- HasAghanimsScepterUpgrade
+|   |   +-- HasAghanimsShardUpgrade
+|   |   +-- SelectedUnit
+|   |   +-- TalentTree[]
+|   |   +-- AttributesLevel
+|   +-- Teams
+|   |   \
+|   |   (Multi-map of team to player id to Hero Details)
+|   |   ...
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Abilities
+|   +-- LocalPlayer
+|   |   +-- Count
+|   |   +-- Ability[]
+|   |   |   \
+|   |   |   +-- Name
+|   |   |   +-- Level
+|   |   |   +-- CanCast
+|   |   |   +-- IsPassive
+|   |   |   +-- IsActive
+|   |   |   +-- Cooldown
+|   |   |   +-- IsUltimate
+|   |   |   +-- Charges
+|   |   |   +-- MaxCharges
+|   |   |   +-- ChargeCooldown
+|   +-- Teams
+|   |   \
+|   |   (Multi-map of team to player id to Ability Details)
+|   |   ...
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Items
+|   +-- LocalPlayer
+|   |   +-- Inventory[]
+|   |   |   \
+|   |   |   +-- Name
+|   |   |   +-- Purchaser
+|   |   |   +-- ItemLevel
+|   |   |   +-- ContainsRune
+|   |   |   +-- CanCast
+|   |   |   +-- Cooldown
+|   |   |   +-- IsPassive
+|   |   |   +-- ItemCharges
+|   |   |   +-- AbilityCharges
+|   |   |   +-- MaxCharges
+|   |   |   +-- ChargeCooldown
+|   |   |   +-- Charges
+|   |   +-- Stash[]
+|   |   |   ...
+|   |   +-- CountInventory
+|   |   +-- CountStash
+|   |   +-- Teleport
+|   |   |   ...
+|   |   +-- Neutral
+|   |   |   ...
+|   |   +-- GetInventoryAt( index )
+|   |   +-- GetInventoryItem( item_name )
+|   |   +-- InventoryContains( item_name )
+|   |   +-- InventoryIndexOf( item_name )
+|   |   +-- GetStashAt( index )
+|   |   +-- GetStashItem( item_name )
+|   |   +-- StashContains( item_name )
+|   |   +-- StashIndexOf( item_name )
+|   +-- Teams
+|   |   \
+|   |   (Multi-map of team to player id to Item Details)
+|   |   ...
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Events[]
+|   |   \
+|   |   +-- GameTime
+|   |   +-- EventType
+|   |   +-- Team
+|   |   +-- KillerPlayerID
+|   |   +-- PlayerID
+|   |   +-- WasSnatched
+|   |   +-- TipReceiverPlayerID
+|   |   +-- TipAmount
+|   |   +-- BountyValue
+|   |   +-- TeamGold
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Buildings
+|   +-- RadiantBuildings
+|   |   +-- TopTowers
+|   |   |   \
+|   |   |   (Map of tower id to Building)
+|   |   |   +-- Health
+|   |   |   +-- MaxHealth
+|   |   +-- MiddleTowers
+|   |   |   \
+|   |   |   (Map of tower id to Building)
+|   |   |   ...
+|   |   +-- BottomTowers
+|   |   |   \
+|   |   |   (Map of tower id to Building)
+|   |   |   ...
+|   |   +-- TopRacks
+|   |   |   \
+|   |   |   (Map of Racks Type to Building)
+|   |   |   ...
+|   |   +-- MiddleRacks
+|   |   |   \
+|   |   |   (Map of Racks Type to Building)
+|   |   |   ...
+|   |   +-- BottomRacks
+|   |   |   \
+|   |   |   (Map of Racks Type to Building)
+|   |   |   ...
+|   |   +-- Ancient
+|   |   |   ...
+|   |   +-- OtherBuildings
+|   |   |   \
+|   |   |   (Map of building id to Building)
+|   |   |   ...
+|   +-- DireBuildings
+|   |   ...
+|   +-- AllBuildings
+|   |   \
+|   |   (Map of team to Building Layout)
+|   |   ...
+|   +-- GetForTeam( team )
++-- League
+|   +-- SeriesType
+|   +-- SelectionPriority
+|   |   +-- Rules
+|   |   +-- PreviousPriorityTeamID
+|   |   +-- CurrentPriorityTeamID
+|   |   +-- PriorityTeamChoice
+|   |   +-- NonPriorityTeamChoice
+|   |   +-- UsedCoinToss
+|   +-- LeagueID
+|   +-- MatchID
+|   +-- Name
+|   +-- Tier
+|   +-- Region
+|   +-- Url
+|   +-- Description
+|   +-- Notes
+|   +-- StartTimestamp
+|   +-- EndTimestamp
+|   +-- ProCircuitPoints
+|   +-- ImageBits
+|   +-- Status
+|   +-- MostRecentActivity
+|   +-- RegistrationPeriod
+|   +-- BasePrizePool
+|   +-- TotalPrizePool
+|   +-- LeagueNoteID
+|   +-- RadiantTeam
+|   |   +-- TeamID
+|   |   +-- TeamTag
+|   |   +-- TeamName
+|   |   +-- SeriesWins
+|   +-- DireTeam
+|   |   ...
+|   +-- SeriesID
+|   +-- StartTime
+|   +-- FirstTeamID
+|   +-- SecondTeamID
+|   +-- Streams[]
+|   |   \
+|   |   +-- StreamID
+|   |   +-- Language
+|   |   +-- Name
+|   |   +-- BroadcastProvider
+|   |   +-- StreamURL
+|   |   +-- VodURL
++-- Draft
+|   +-- ActiveTeam
+|   +-- Pick
+|   +-- ActiveTeamRemainingTime
+|   +-- RadiantBonusTime
+|   +-- DireBonusTime
+|   +-- Teams
+|   |   |   \
+|   |   |   (Map of team to Draft Details)
+|   |   +-- IsHomeTeam
+|   |   +-- PickIDs
+|   |   |   \
+|   |   |   (Map of slot number to picked hero ID)
+|   |   +-- PickHeroIDs
+|   |   |   \
+|   |   |   (Map of slot number to picked hero name)
+|   +-- GetForTeam( team )
++-- Wearables
+|   +-- LocalPlayer
+|   |   +-- Wearables
+|   |   |   \
+|   |   |   (Map of slot number to Wearable Item)
+|   |   |   +-- ID
+|   |   |   +-- Style
+|   +-- Teams
+|   |   \
+|   |   (Multi-map of team to player id to Item Wearable Item)
+|   |   ...
+|   +-- GetForTeam( team )
+|   +-- GetForPlayer( player_id )
++-- Minimap
+|   +-- Elements
+|   |   |   \
+|   |   |   (Map of element ID to Minimap Element)
+|   |   +-- Location
+|   |   +-- RemainingTime
+|   |   +-- EventDuration
+|   |   +-- Image
+|   |   +-- Team
+|   |   +-- Name
+|   |   +-- Rotation
+|   |   +-- UnitName
+|   |   +-- VisionRange
+|   +-- GetForTeam( team )
+|   +-- GetByUnitName( unit_name )
++-- Roshan
+|   +-- Health
+|   +-- MaxHealth
+|   +-- IsAlive
+|   +-- SpawnPhase
+|   +-- PhaseTimeRemaining
+|   +-- Location
+|   +-- Rotation
+|   +-- Drops
+|   |   +-- Items
+|   |   |   \
+|   |   |   (Map of item index to item name)
++-- Couriers
+|   +-- CouriersMap
+|   |   \
+|   |   (Map of courier ID to Courier)
+|   |   +-- Health
+|   |   +-- MaxHealth
+|   |   +-- IsAlive
+|   |   +-- RemainingRespawnTime
+|   |   +-- Location
+|   |   +-- Rotation
+|   |   +-- OwnerID
+|   |   +-- HasFlyingUpgrade
+|   |   +-- IsShielded
+|   |   +-- IsBoosted
+|   |   +-- Items
+|   |   |   \
+|   |   |   (Map of item index to Courier Item)
+|   |   |   +-- OwnerID
+|   |   |   +-- Name
+|   |   +-- GetItemAt( index )
+|   |   +-- GetInventoryItem( item_name )
+|   |   +-- InventoryContains( item_name )
+|   |   +-- InventoryIndexOf( item_name )
+|   +-- GetForPlayer( player_id )
++-- NeutralItems
+|   +-- TierInfos
+|   |   |   \
+|   |   |   (Map of tier index to Neutral Tier Info)
+|   |   +-- Tier
+|   |   +-- MaxCount
+|   |   +-- DropAfterTime
+|   +-- TeamItems
+|   |   |   \
+|   |   |   (Map of team to Team Neutral Items)
+|   |   +-- ItemsFound
+|   |   +-- TeamItems
+|   |   |   \
+|   |   |   (Map of item index to Neutral Item)
+|   |   |   +-- Name
+|   |   |   +-- Tier
+|   |   |   +-- Charges
+|   |   |   +-- State
+|   |   |   +-- PlayerID
+|   +-- GetForTeam( team )
++-- Previously (Previous information from Game State)
++-- LocalPlayer
+|   +-- PlayerID
+|   +-- IsLocalPlayer
+|   +-- Details
+|   +-- Hero
+|   +-- Abilities
+|   +-- Items
+|   +-- Wearables
+|   +-- Courier
+|   +-- MinimapElements
++-- RadiantTeamDetails
+|   +-- Team
+|   +-- Players
+|   +-- Draft
+|   +-- NeutralItems
+|   +-- Buildings
+|   +-- MinimapElements
+|   +-- Events
+|   +-- IsWinner
++-- DireTeamDetails
+|   ...
++-- NeutralTeamDetails
+|   ...
++-- IsSpectating
++-- IsLocalPlayer

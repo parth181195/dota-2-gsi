@@ -1,0 +1,9 @@
+export const checkForTeamDataRegexp =  /team(\d+)/;
+export const checkPlayerDataRegexp =  /player(\d+)/;
+export const checkTalentTreeRegexp = /talent_(\d+)/;
+export const checkAbilityRegexp = /ability(\d+)/;
+export const checkSlotItemRegexp = /slot(\d+)/;
+export const checkStashItemRegexp = /stash(\d+)/;
+export const checkTeleportItemRegexp = /teleport(\d+)/;
+export const checkNeutralItemRegexp = /\bneutral(\d+)\b/;
+export const checkPreservedNeutralItemRegexp = /preserved_neutral(\d+)/;
